@@ -1,4 +1,4 @@
 output/
-setPathsNSD.m
+personalDataPath.m
 .DS_Store
 */.DS_Store
