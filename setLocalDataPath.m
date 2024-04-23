@@ -1,6 +1,6 @@
 function localDataPath = setLocalDataPath(varargin)
 % function LocalDataPath = setLocalDataPath(varargin)
-% Return the path to the root CCEP  directory and add paths in this repo
+% Return the path to the root  directory and add paths in this repo
 %
 % input:  
 %   personalDataPath: optional, set to 1 if adding personalDataPath
@@ -21,13 +21,13 @@ function localDataPath = setLocalDataPath(varargin)
 
 if isempty(varargin)
     rootPath = which('setLocalDataPath');
-    ccepRepoPath = fileparts(rootPath);
+    RepoPath = fileparts(rootPath);
 
     % add path to functions
-    addpath(genpath(ccepRepoPath));
+    addpath(genpath(RepoPath));
 
     % add localDataPath default
-    localDataPath = fullfile(ccepRepoPath,'data');
+    localDataPath = fullfile(RepoPath,'data');
 elseif ~isempty(varargin)
     % add path to data
     if varargin{1}==1 && exist('personalDataPath','file')
@@ -46,8 +46,8 @@ elseif ~isempty(varargin)
     
     % add path to functions
     rootPath = which('setLocalDataPath');
-    ccepRepoPath = fileparts(rootPath);
-    addpath(genpath(ccepRepoPath));
+    RepoPath = fileparts(rootPath);
+    addpath(genpath(RepoPath));
 end
 
 return
