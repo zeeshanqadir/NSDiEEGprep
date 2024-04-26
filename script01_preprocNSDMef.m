@@ -9,10 +9,10 @@
 localDataPath = setLocalDataPath(1); % runs local PersonalDataPath (gitignored)
 addpath('functions');
 
-subjects = {'01','02','03','04','05','06','07'};
+% subject to preprocess
+ss = 17;
+sub_label = sprintf('%02d', ss);
 
-ss = 7;
-sub_label = subjects{ss};
 ses_label = 'ieeg01';
 % list of task labels that should be preprocessed and concatenated
 task_labels = {'NSDspecial01','NSDspecial02','NSDspecial03','NSDspecial04','NSDspecial05',...
@@ -20,8 +20,8 @@ task_labels = {'NSDspecial01','NSDspecial02','NSDspecial03','NSDspecial04','NSDs
 task_list = readtable(fullfile(localDataPath.input,['sub-' sub_label],['ses-' ses_label],['sub-' sub_label '_ses-' ses_label '_scans.tsv']), 'FileType', 'text', 'Delimiter', '\t', 'TreatAsEmpty', 'n/a');
 
 % electrodes path (to exclude electrodes on the SOZ)
-elecPath = fullfile(localDataPath.input, ['sub-' sub_label], ['ses-' ses_label], 'ieeg', ['sub-' sub_label '_ses-' ses_label '_electrodes.tsv']);
-elecs = ieeg_readtableRmHyphens(elecPath);
+elecsPath = fullfile(localDataPath.input, ['sub-' sub_label], ['ses-' ses_label], 'ieeg', ['sub-' sub_label '_ses-' ses_label '_electrodes.tsv']);
+elecs = ieeg_readtableRmHyphens(elecsPath);
 
 % For all possible runs, set data_info
 data_info = [];
@@ -253,8 +253,8 @@ set(gca,'YTick',1:length(good_channel_nrs),'YTickLabels',all_channels.name(good_
 
 %% render and plot noise ceiling SNR
 
-elecPath = fullfile(localDataPath.input, ['sub-' sub_label], ['ses-' ses_label], 'ieeg', ['sub-' sub_label '_ses-' ses_label '_electrodes.tsv']);
-elecs = ieeg_readtableRmHyphens(elecPath);
+elecsPath = fullfile(localDataPath.input, ['sub-' sub_label], ['ses-' ses_label], 'ieeg', ['sub-' sub_label '_ses-' ses_label '_electrodes.tsv']);
+elecs = ieeg_readtableRmHyphens(elecsPath);
 
 name = all_channels.name;
 all_channels_table = table(name);
