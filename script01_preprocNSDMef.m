@@ -187,9 +187,9 @@ clear all
 localDataPath = setLocalDataPath(1); % runs local PersonalDataPath (gitignored)
 addpath('functions');
 
-subjects = {'01','02','03','04','05','06'};
+subjects = {'01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17'};
 
-ss = 5;
+ss = 13;
 sub_label = subjects{ss};
 ses_label = 'ieeg01';
 
@@ -280,11 +280,11 @@ for hh = 1:2
     if hh==1
         hemi = 'l';
         g = gL_infl;
-        views_plot = {[40,-30],[-45,-10],[-90,20]};
+        views_plot = {[40,-30],[-45,-10],[-90,20],[90 0]};
     elseif hh==2
         hemi = 'r';
         g = gR_infl;
-        views_plot = {[-40,-30],[45,-10],[90,20]};
+        views_plot = {[-40,-30],[45,-10],[90,20],[270 0]};
     end
 
     % surface labels 
@@ -331,16 +331,16 @@ for hh = 1:2
         print('-dpng','-r300',fullfile(localDataPath.input,'derivatives','render',['sub-' sub_label],...
             ['inflated_labels_sub-' sub_label '_WangAreas_v' int2str(v_d(1)) '_' int2str(v_d(2)) '_' hemi]))
              
-%         % with activity
-%         figure
-%         tH = ieeg_RenderGiftiLabels(g,vert_label,cmap,Wang_ROI_Names,sulcal_labels);
-%         all_chan_snr_plot = all_chan_snr;
-%         all_chan_snr_plot(all_chan_snr_plot<.2) = 0;
-%         ieeg_elAdd_sizable(els_pop(electrodes_thisHemi,:),all_chan_snr_plot(electrodes_thisHemi),.8,40) % add electrode positions
-%         ieeg_viewLight(v_d(1),v_d(2)) % change viewing angle   
-%         set(gcf,'PaperPositionMode','auto')
-%         print('-dpng','-r300',fullfile(localDataPath.input,'derivatives','render',['sub-' sub_label],...
-%             ['NCSNR_sub-' sub_label '_WangAreas_v' int2str(v_d(1)) '_' int2str(v_d(2)) '_' hemi]))
+        % with activity
+        figure
+        tH = ieeg_RenderGiftiLabels(g,vert_label,cmap,Wang_ROI_Names,sulcal_labels);
+        all_chan_snr_plot = all_chan_snr;
+        all_chan_snr_plot(all_chan_snr_plot<.2) = 0;
+        ieeg_elAdd_sizable(els_pop(electrodes_thisHemi,:),all_chan_snr_plot(electrodes_thisHemi),.8,40) % add electrode positions
+        ieeg_viewLight(v_d(1),v_d(2)) % change viewing angle   
+        set(gcf,'PaperPositionMode','auto')
+        print('-dpng','-r300',fullfile(localDataPath.input,'derivatives','render',['sub-' sub_label],...
+            ['NCSNR_sub-' sub_label '_WangAreas_v' int2str(v_d(1)) '_' int2str(v_d(2)) '_' hemi]))
     end
     close all
 

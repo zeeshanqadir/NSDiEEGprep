@@ -1,6 +1,14 @@
+
+% ignore folders with data and temporary tests
 data/
 output/
+testing/
+
+% ignore personal data path 
 personalDataPath.m
+
+% ignore storage files
 .DS_Store
 */.DS_Store
 *.asv
+*.m~
