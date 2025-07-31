@@ -1,6 +1,6 @@
 %% Function to plot most/least responsive NSD images
 
-function im_idx = plotRespIm( data, shared_idx, im_path, varargin)
+function im_idx = plotResponsiveImages( data, shared_idx, im_path, varargin)
  
 % input:
 %     data: iEEG/fMRI data vector (n x 1)
@@ -18,17 +18,17 @@ function im_idx = plotRespIm( data, shared_idx, im_path, varargin)
 %   1. Display 200 most responsive images of shared 1000
 %   tempbb  =  mean( bb_el_1000(winresp, :), 1, 'omitnan')';
 %   im_path = '..data/nsddata_stimuli/stimuli/shared1000/';
-%   im_idx  = plotRespIm( tempbb, 1:1000, impath, 'max', 200); 
+%   im_idx  = plotResponsiveImages( tempbb, 1:1000, impath, 'max', 200); 
 %
 %   2. Display 200 most responsive images of shared 1000 highlighting all faces
 %   tempbb  =  mean( bb_el_1000(winresp, :), 1, 'omitnan')';
 %   im_path = '..data/nsddata_stimuli/stimuli/shared1000/';
-%   im_idx  = plotRespIm( tempbb, 1:1000, impath, 'max', 200, find(face_idx)); 
+%   im_idx  = plotResponsiveImages( tempbb, 1:1000, impath, 'max', 200, find(face_idx)); 
 % 
 %   3. Display 50 most responsive images of special100
 %   tempbb  =  mean( bb_el_1000(winresp, find(special100_idx)), 1, 'omitnan')';
 %   im_path = '..data/nsddata_stimuli/stimuli/shared1000/';
-%   im_idx  = plotRespIm( tempbb, find(special100_idx), impath, 'max', 50); 
+%   im_idx  = plotResponsiveImages( tempbb, find(special100_idx), impath, 'max', 50); 
 %
 % ZQ Nov 2024
 
